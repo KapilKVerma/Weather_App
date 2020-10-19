@@ -1,0 +1,26 @@
+.navigation {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: sticky;
+  top: 0;
+}
+
+.navigation-info {
+  color: antiquewhite;
+  font-size: 1.4rem;
+}
+
+@media only screen and (max-width: 770px) {
+  .navigation-info {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .navigation-info {
+    font-size: 0.8rem;
+  }
+
+  .users {
+    display: none;
+  }
+}
