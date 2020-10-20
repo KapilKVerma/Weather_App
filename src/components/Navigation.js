@@ -28,16 +28,16 @@ const Navigation = () => {
       <Navbar expand="lg" className="navigation">
         <Container>
           <Navbar.Brand>
-            <Nav.Link href="/" className="p-2">
+            <Nav.Link href="/" className="p-0 ">
               <i
                 className="fas fa-cloud-sun-rain"
-                style={{ color: "antiquewhite", fontSize: "3rem" }}
+                style={{ color: "antiquewhite", fontSize: "2rem" }}
               ></i>
             </Nav.Link>
           </Navbar.Brand>
 
           {mel ? (
-            <div className="navigation-info">
+            <div className="navigation-info ">
               {mel.name} {Math.round(mel.main.temp)}
               <sup>&#8451;</sup> |<span className=""> {day ? day : null}</span>,
               <span className=""> {date ? date : null}</span>
@@ -50,7 +50,7 @@ const Navigation = () => {
               style={{
                 color: "teal",
                 fontWeight: "600",
-                fontSize: "1.4rem",
+                fontSize: "1.2rem",
               }}
             >
               News
