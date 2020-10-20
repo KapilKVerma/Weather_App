@@ -3,12 +3,11 @@ import { Card, Row, Col, Container, Form, Button } from "react-bootstrap";
 import axios from "axios";
 
 const News = () => {
-  const [length, setLength] = useState(4);
   const [loading, setLoading] = useState(false);
   const [country, setCountry] = useState();
   const [newsArticles, setNewsarticles] = useState();
   const [counter, setCounter] = useState(0);
-  const [countryCode, setCountryCode] = useState();
+
   const [error, setError] = useState();
   const API_KEY_NEWS = process.env.REACT_APP_KEY_NEWS;
 
@@ -128,15 +127,10 @@ const News = () => {
 
   const SettingNewsArticles = (articles) => {
     const ArticlesArray = [];
-    for (let i = 0; i < length; i++) {
+    for (let i = 0; i < 4; i++) {
       ArticlesArray.push(articles[i]);
     }
     setNewsarticles(ArticlesArray);
-  };
-
-  const IncreaseLength = () => {
-    setLength(length + 10);
-    SettingNewsArticles(newsArticles);
   };
 
   const callApi = (code) => {
@@ -157,7 +151,7 @@ const News = () => {
   const onSubmit = (e) => {
     if (country) {
       const code = Countries.filter((Country) => {
-        return Country.name == country;
+        return Country.name === country;
       });
       callApi(code[0].code);
     } else {
@@ -167,8 +161,6 @@ const News = () => {
 
   useEffect(() => {
     setLoading(true);
-    callApi("au");
-
     try {
       const interval = setInterval(() => {
         setCounter(counter + 1);
@@ -178,11 +170,13 @@ const News = () => {
     } catch (error) {
       console.log(error.message);
     }
-  }, []);
+    setLoading(false);
+  }, [counter]);
 
   return (
     <div>
       <Container>
+        {loading ? <div>loading..</div> : null}
         <Row>
           <Form className="p-5">
             <Form.Group
